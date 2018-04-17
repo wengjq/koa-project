@@ -1,0 +1,16 @@
+extends layout
+
+block content	
+	nav(class="white",role="navigation")
+		div(class="nav-wrapper container")
+			a(id="logo-container",href="#",class="brand-logo") koa shop
+			ul(class="right hide-on-med-and-down")
+				li
+					a(href="#") Navbar Link
+			ul(id="nav-mobile",class="sidenav")
+				li
+					a(href="#") Navbar Link
+			a(href="#",data-target="nav-mobile",class="sidenav-trigger")
+				i(class="material-icons") menu
+	h1= title
+	p Welcome to #{title}
