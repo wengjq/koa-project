@@ -5,6 +5,13 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const requireDirectory = require('require-directory');
+const path = require('path')
+const config = require('./config');
+
+global.$config = config;
+global.$models = requireDirectory(module, __dirname + "/models");
+global.$controllers = requireDirectory(module, __dirname + "/controllers");
 
 const index = require('./routes/index')
 const users = require('./routes/users')
@@ -14,7 +21,7 @@ onerror(app)
 
 // middlewares
 app.use(bodyparser({
-  enableTypes:['json', 'form', 'text']
+  enableTypes: ['json', 'form', 'text']
 }))
 app.use(json())
 app.use(logger())
@@ -23,6 +30,9 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
+
+path.join(__dirname, './db');
+require('./db');
 
 // logger
 app.use(async (ctx, next) => {

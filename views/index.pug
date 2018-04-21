@@ -3,13 +3,22 @@ extends layout
 block content	
 	nav(class="white",role="navigation")
 		div(class="nav-wrapper container")
-			a(id="logo-container",href="#",class="brand-logo") koa shop
+			a(id="logo-container",href="#",class="brand-logo") 商城
 			ul(class="right hide-on-med-and-down")
 				li
-					a(href="#") Navbar Link
+					a(href="/register") 注册
+				li
+					a(href="/login") 登录
+				li
+					a(href="#") 
+						<i class="material-icons">shopping_cart</i>	
 			ul(id="nav-mobile",class="sidenav")
 				li
-					a(href="#") Navbar Link
+					a(href="/register") 注册
+				li
+					a(href="/login") 登录
+				li
+					a(href="#") 购物车		
 			a(href="#",data-target="nav-mobile",class="sidenav-trigger")
 				i(class="material-icons") menu
 	h1= title

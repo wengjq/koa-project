@@ -1,0 +1,14 @@
+- var _action = user._action == 'edit' ? '#' : '/users/'
+- var _method = user._action == 'edit' ? '' : 'post'
+- var _type  = user._action == 'edit' ? 'button' : 'submit'
+- var onClick = user._action == 'edit' ? "click_edit('user-" + user._action + "-form','/users/" + user._id + "/')" : ""
+form(id='user-' + user._action + '-form', action='' + _action + '', method='' + _method + '', role='form', style='padding-bottom: 100px;')
+	each n in ['user.username','user.password','user.avatar','user.phone_number','user.address']
+		- m = eval(n);
+		div(class="row")
+			div(class="input-field col s6", style="float: none; margin-right: auto;")
+				input(type='text',class="validate",name='' + n.split('.')[1] + '',id='' + n.split('.')[1] + '',value='' + (m == undefined ? '' : m) + '')
+				label(for='' + n.split('.')[1] + '',class="active") #{n.split('.')[1]} 
+	div(class="row actions") 
+		input(type='' + _type + '',value='Submit',onClick='' + onClick + '',class="waves-effect waves-light btn")
+		a(class="waves-effect waves-light btn", href="/", style="margin-left: 20px;") Back
